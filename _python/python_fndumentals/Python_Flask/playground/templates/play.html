@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>play_ground</title>
+</head>
+<style>
+  .box {
+    background-color: {{backgroun_color}};
+    width: 150px;
+    height: 150px;
+    display: inline-block;
+    margin: 10px auto;
+  }
+
+  .box:hover {
+    color: aquamarine;
+    border: 2px solid aquamarine;
+  }
+</style>
+
+<body>
+  {% for _ in range(x) %}
+  <div class="box"></div>
+  {% endfor %}
+</body>
+
+</html>
