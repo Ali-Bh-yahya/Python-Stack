@@ -4,7 +4,7 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 body{
-  margin:20 auto;
+  margin:20px auto;
   width: 1000px;
   height: 1000px ;
 }
@@ -13,7 +13,7 @@ body{
   width: 400px;
   height: 300px;
   background-color: #984f4f;
-  margin: 20 auto;
+  margin: 20px auto;
 
 }
 

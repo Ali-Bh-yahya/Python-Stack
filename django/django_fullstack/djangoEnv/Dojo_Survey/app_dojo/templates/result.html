@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User_info</title>
+  {% load static  %}
+  <link rel="stylesheet" href="{% static 'CSS/my_style.css'%}">
+</head>
+<body>
+  <div class="container">
+    <p>Your Name : {{name}}</p>
+    <p>Doj location : {{location}}</p>
+    <p>Favorite Language:{{language}}</p>
+    <p>comment : {{comment}}</p>
+  </div>
+</body>
+</html>
