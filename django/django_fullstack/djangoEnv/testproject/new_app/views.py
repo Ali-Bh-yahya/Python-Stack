@@ -27,4 +27,5 @@ def user(request):
   return render (request,'index.html')
 
 def user_info(request):
-  
+  print ("Got a User Info")
+  return HttpResponse("hello every one")

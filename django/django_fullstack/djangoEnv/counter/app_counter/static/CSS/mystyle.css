@@ -1,0 +1,44 @@
+*{
+  margin:0px 0px;
+  padding:0px 0px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background-color: grey;
+  margin: 10px auto;
+}
+
+.container {
+  display:flex;
+  flex-direction:column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  border: 2px solid black;
+  gap:15px;
+  width:600px ;
+  height: 600px;
+  background-color: white;
+  margin: 0 auto;
+}
+
+h1 {
+  text-align: center;
+}
+
+label{
+  font-size: 20px;
+  text-align: center;
+  border: 3px solid black;
+  border-radius: 5px;
+}
+
+.btn-edit{
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin: 5px  ;
+}
