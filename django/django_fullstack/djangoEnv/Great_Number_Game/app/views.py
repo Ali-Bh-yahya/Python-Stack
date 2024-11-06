@@ -13,10 +13,14 @@ def compare_function (request):
   if gusses_num ==  num_rand:
     request.session['massage'] = f'{gusses_num} was the number'
     request.session["won"] = True
+    request.session['color'] = "green"
   if gusses_num > num_rand:
     request.session['massage'] = "is too high !"
+    request.session['color'] = "red"
   if gusses_num < num_rand:
-     request.session['massage'] = "is too low !"
+      request.session['massage'] = "is too low !"
+      request.session['color'] = "red"
+
   return redirect('/')
     
 def reset(request):

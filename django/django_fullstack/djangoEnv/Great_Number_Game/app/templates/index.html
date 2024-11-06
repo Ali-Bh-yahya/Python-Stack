@@ -6,6 +6,16 @@
   <title>Guess the random number</title>
   {% load static%}
   <link rel="stylesheet" type="text/css" href="{% static 'CSS/style.css' %}">
+  <style>
+    .result{
+      text-align: center;
+      margin:2px auto;
+      width:100px;
+      height:35px;
+      background-color:{{request.session.color}};
+    }
+
+  </style>
 </head>
 <body>
   <div class="conteanir">
@@ -20,7 +30,7 @@
     </form>
     {% endif %}
     {%if request.session.massage %}
-      <p>{{ request.session.massage}}</p>
+      <p class="result">{{ request.session.massage}}</p>
     {% endif %}
     {% if request.session.won %}
     <form action="/reset" method="post">
@@ -28,6 +38,10 @@
       <input class="button" type="submit" value="Restart Game">
     </form>
     {% endif %}
+    
+
+
+
   </div>
 </body>
 </html>
