@@ -1,0 +1,19 @@
+body {  
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background-color: blanchedalmond;
+}
+.button {
+  background-color: maroon;
+  color: white;
+  border: 0.4vh solid black;
+  padding: 1vh;
+}
+.button:hover {
+  background-color: darkred;
+  cursor: pointer;
+}
+.input-number {
+  height: 4.3vh;
+  margin: 0 0.3vh 0 0;
+}

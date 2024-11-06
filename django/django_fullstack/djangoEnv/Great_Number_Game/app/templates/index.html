@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guess the random number</title>
+  {% load static%}
+  <link rel="stylesheet" type="text/css" href="{% static 'CSS/style.css' %}">
+</head>
+<body>
+  <div class="conteanir">
+    <h1>Welcome to the Great Number Game!</h1>
+    <p>I am thinking of a number between 1 and 100</p>
+    <p>Take a guess!</p>
+    {% if not request.session.won %}
+    <form action="/guess" method="post">
+      {% csrf_token %}
+      <input class='input-number' type="number" name="guess" value="num" autofocus>
+      <input class="button" type="submit"> 
+    </form>
+    {% endif %}
+    {%if request.session.massage %}
+      <p>{{ request.session.massage}}</p>
+    {% endif %}
+    {% if request.session.won %}
+    <form action="/reset" method="post">
+      {% csrf_token %}
+      <input class="button" type="submit" value="Restart Game">
+    </form>
+    {% endif %}
+  </div>
+</body>
+</html>
