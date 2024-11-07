@@ -1,17 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>gold</title>
- {% load static %}   
- <link rel="stylesheet" href="{% static 'CSS\my_style '%}">
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'CSS\my_style.css '%}">
 </head>
+
 <body>
   <div class="main_container">
-    <h3>Your Gold :</h3>
-    
+      <h4>Your Gold :</h4>
+      <input class="number_of_gold" type="number" name="number" value="{{request.session.Gold}}">
+      <div class="main">
+        <form action="/prosses_money" method="post" class="place">
+          {% csrf_token %}
+          <h3>Farm</h3>
+          <p>(earns 10 - 20 gold)</p>
+          <input type="submit" value="submit">
+          <input type="hidden" name = "key_of_place" value="farm"><!---->
+        </form>
+        <form action="/prosses_money" method="post" class="place">
+          {% csrf_token %}
+          <h3>Cave</h3>
+          <p>(earns 5 - 10 gold)</p>
+          <input type="submit" value="submit">
+          <input type="hidden" name = "key_of_place" value="cave">
+        </form>
+        <form action="/prosses_money" method="post" class="place">
+          {% csrf_token %}
+          <h3>House</h3>
+          <p>(earns 2 - 5 gold)</p>
+          <input type="submit" value="submit">
+          <input type="hidden" name = "key_of_place" value="house">
+        </form>
+        <form action="/prosses_money" method="post" class="place">
+          {% csrf_token %}
+          <h3>Casino</h3>
+          <p>(earns/takes 0 - 50 gold)</p>
+          <input type="submit" value="submit">
+          <input type="hidden" name = "key_of_place" value = "casino">
+        </form>
+      </div>
+    <h4>Activities:</h4>
+    <div class="activites">
+   {% for massage in request.session.massages %}    
+      <p>{{massage}}</p>
+    {% endfor %}
+    </div>
+
   </div>
-  
+
 </body>
+
 </html>
