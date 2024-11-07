@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+  <title>User table</title>
+</head>
+<body>
+  
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <td>ID</td>
+        <td>first name</td>
+        <td>last name</td>
+        <td>Email</td>
+        <td>Age</td>
+        <td>Actions</td>
+      </tr>
+    </thead>
+    <tbody>
+      {% for key in users  %}
+      <tr>
+        <td>{{key.id}}</td> 
+        <td>{{key.fname}}</td> 
+        <td>{{key.lname}}</td>
+        <td>{{key.email}}</td>
+        <td>{{key.age}}</td>
+        <td><a href="{% url 'delete' key.id %}">Remove</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+
+  </table>
+
+  <form action="/proces" method="post">
+    {% csrf_token %}
+    <div>
+      <label for="">first name</label>
+      <input type="text" name="fname">
+      <label for="">last name</label>
+      <input type="text" name="lname">
+    </div>
+    <div>
+      <label for="">email</label>
+      <input type="email" name="email">
+      <label for="">age</label>
+      <input type="number" name="age">
+    </div>
+    <input type="submit" name = "submit">
+  </form>
+
+
+
+
+</body>
+</html>
