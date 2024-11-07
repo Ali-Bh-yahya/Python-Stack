@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='CSS/style.css') }}">  <title>Geess the random number</title>
+  <style>
+  .result{
+      text-align: center;
+      margin: 2px auto;
+      width: 100px;
+      height: 35px;
+      background-color: {{session.color}};
+    }
+  </style>
+</head>
+<body>
+  <div class="conteanir">
+    <h1>Welcom to the Great Number Game!</h1>
+    <p>I am thinking of a number betwwen 1 and 100</p>
+    <p>Take a Guess !</p>
+    {% if not session.won %}
+    <form action="/guess" method="post">
+      <input class='input-number' type="number" name = "guess" vlaue = "num" autofocus>
+      <input class="button" type="submit" value="Guess">
+    </form>
+    {% endif %}
+    {%if session.massage %}
+    <p class="result"> {{session.massage}}</p>
+    {% endif %}
+    {% if session.won %}
+    <form action="/reset" method="post">
+      <input class="button" type="submit" value="Restart Game">
+    </form>
+    {% endif %}
+
+
+  </div>
+</body>
+</html>
