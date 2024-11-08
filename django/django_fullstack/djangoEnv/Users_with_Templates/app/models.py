@@ -11,7 +11,7 @@ class User(models.Model):
   updated_at = models.DateTimeField(auto_now=True)
 
 
-def insert_user(data):
+def user_create(data):
   User.objects.create(fname =data['fname'],lname=data['lname'],email=data['email'],age = data['age'])
 
 

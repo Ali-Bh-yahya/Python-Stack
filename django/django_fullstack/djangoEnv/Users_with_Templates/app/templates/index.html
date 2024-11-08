@@ -22,13 +22,13 @@
       </tr>
     </thead>
     <tbody>
-      {% for key in users  %}
+      {% for user in users  %}
       <tr>
-        <td>{{key.id}}</td> 
-        <td>{{key.fname}}</td> 
-        <td>{{key.lname}}</td>
-        <td>{{key.email}}</td>
-        <td>{{key.age}}</td>
+        <td>{{user.id}}</td> 
+        <td>{{user.fname}}</td> 
+        <td>{{user.lname}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.age}}</td>
         <td><a href="{% url 'delete' key.id %}">Remove</a></td>
       </tr>
       {% endfor %}

@@ -9,9 +9,9 @@ def index(request):
   }
   return render(request,'index.html',context)
 
-def user_edit(request):
+def user_create(request):
   if request.method == 'POST':
-   models.insert_user(request.POST)   
+   models.user_create(request.POST)   
    return redirect('/')
   elif request.method == 'GET':
     return HttpResponse('somthing wrong')
