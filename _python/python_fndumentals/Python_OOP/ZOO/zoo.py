@@ -13,11 +13,17 @@ class Zoo:
         print("-"*30, self.name, "-"*30)
         for animal in self.animals:
             animal.display_info()
+
+            
 zoo1 = Zoo("Ali's Zoo")
 simba = Lion("Simba", 32, 40, 22, 94)
 eagle_one = Eagle("Eagle One", 3, 70, 85, "Advanced")
 zoo2 = Zoo("Jon's Zoo")
 Rajah = Lion("Rajah",22,33,22,90)
+
+zoo3 = Zoo("Turk's Zoo")
+Rain = Lion("Rain",3,55,20)
+Fire = Lion("Fire",)
 
 zoo1.add_lion(simba)
 simba = Lion("Simba", 32, 40, 22, 94)

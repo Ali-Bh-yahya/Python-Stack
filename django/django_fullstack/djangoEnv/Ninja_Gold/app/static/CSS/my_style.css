@@ -47,7 +47,7 @@ h4 , .number_of_gold {
 
 .activites{
   background-color: white;
-  overflow-y: scroll;
+  overflow: scroll;
   height: 43vh;
   border: 2px solid black;
   border-radius: 3%;
