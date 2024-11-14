@@ -1,0 +1,21 @@
+<h1>{{author.first_name}} {{author.last_name}}</h1>
+<h3>iD: {{author.id}}</h3>
+<label>note:</label>
+<p>{{author.note}}</p>
+
+<h3>Authors:</h3>
+<ul>
+  {% for book in author.books.all %}
+  <li>{{book.title}}</li>
+  {% endfor %}
+</ul>
+<form action="/join_author" method = "POST">
+  {% csrf_token %}
+  <select name="book" id="">
+    {% for book  in books %}
+    <option value = "{{book.id}}">{{book.title}}</option>
+    {% endfor %}
+  </select>
+  <input type="hidden" value="{{author.id}}" name="author">
+  <button>Add</button>
+</form>

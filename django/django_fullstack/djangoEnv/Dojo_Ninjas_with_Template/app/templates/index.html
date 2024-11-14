@@ -1,24 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dojo & Ninjas with Template</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'CSS/style1.css'%}">
 </head>
 <body>
   <div class="container">
-    <form action="" method="post">
+    <form class="first_form" action="/add_dojo" method="post" >
       {% csrf_token %}
       <h1>Add a Dojo</h1>
       <label> Name :</label>
       <input type="text" name="name">
       <label> City :</label>
-      <input type="text" name = "city">
+      <input type="text" name="city">
       <label for="">State:</label>
-      <input type="text" name="state ">
-      <input type="submit" name="Add">
+      <input type="text" name="state">
+      <input class="btn btn-outline-primary" type="submit" name="Add">
     </form>
-    <form action="" method="post">
+    <form class="first_form" action="/add_ninja" method="post">
       {% csrf_token %}
       <h1>Add a Ninja :</h1>
       <label for="">First Name :</label>
@@ -26,17 +30,29 @@
       <label for="">Last Name :</label>
       <input type="text" name="last_name">
       <label for="">Dojo</label>
-      <select name="" id="">
-        <option value=""disabled selected>-select a dojo-</option>
-        <option value="ninja">Ninja</option>
+      <select name="dojo" id="">
+        <option value="" disabled selected>-select a dojo-</option>
+        {% for dojo in dojos %}
+            <option value="{{dojo.id}}">{{dojo.name}}</option>
+        {% endfor %}
       </select>
+      <input class="btn btn-outline-primary" type="submit" name="Add" value="Add">
     </form>
   </div>
-
-    <ul>
-      <h1>All the Dojos</h1>
-        <li></li>
-    </ul>
+  <div class="min_container"></div>
+  <h1>All the Dojos :</h1>
+  <ul>
+    {% for dojo in dojos %}
+      <li>{{dojo.name}} </li>
+      <ul><li>{{dojo.city}} , {{dojo.state}}</li></ul>
+       <ul><ul>
+       {% for ninja in dojo.ninjas.all %}
+          <li><em>{{ninja.first_name}} , {{ninja.last_name}}</em></li>
+        {% endfor %}
+      </ul></ul>
+    {% endfor %}
+  </ul>
 
 </body>
+
 </html>

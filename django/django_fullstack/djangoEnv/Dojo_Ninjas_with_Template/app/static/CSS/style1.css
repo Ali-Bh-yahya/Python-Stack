@@ -1,0 +1,36 @@
+*{
+  margin: 0 0;
+  padding: 0 0;
+
+}
+
+.container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 75vh;
+  background-color: grey;
+  gap: 20px;
+}
+
+.first_form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 400px;
+  background-color: rgba(255, 255, 255, 0.445);
+  padding: 20px;
+  border-radius: 10px;
+  height: 300px;
+  border: 2px solid black;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+h1{
+  text-align: center;
+}
+ul{
+  text-align: center;
+}
