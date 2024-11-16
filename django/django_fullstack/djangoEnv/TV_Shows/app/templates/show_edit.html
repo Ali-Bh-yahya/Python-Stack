@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>edit_show</title>
+</head>
+<body>
+  <form action="/confirmupdate" method="post">
+    {% csrf_token %}
+    <label for="">Title</label>
+    <input type="text" name = "title" value="{{show.title}}">
+    <br>
+    <label for="">Network</label>
+    <input type="text" name = "network" value="{{show.network}}">
+    <br>
+    <label for="">Released Date</label>
+    <input type="date" name="released_date" >
+    <br>
+    <label for="">Description:</label>
+    <br>
+    <textarea name="description" id="">{{show.description}}</textarea>
+    <br>
+    <button type="submit">Update</button>
+    <input type="hidden" value="{{show.id}}" name = "id">
+  </form>
+  
+</body>
+</html>
