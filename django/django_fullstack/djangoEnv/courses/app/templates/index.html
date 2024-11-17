@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Courses</title>
+</head>
+<body>
+    <h1>Courses</h1>
+    <form method="post" action="{% url 'add_course' %}">
+        {% csrf_token %}
+        <label for="course_name">Course Name:</label>
+        <input type="text" id="course_name" name="course_name" required><br>
+
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" required></textarea><br>
+
+        <button type="submit">Add Course</button>
+    </form>
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <h2>All Courses</h2>
+    <ul>
+        {% for course in courses %}
+            <li>{{ course.course_name }} - {{ course.description.content }} - 
+                <a href="/delete/{{ course.id }}/">Remove</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

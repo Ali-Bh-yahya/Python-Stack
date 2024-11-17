@@ -13,12 +13,12 @@ class CourseManager(models.Manager):
       errors['description'] = 'Description should be at least 15 characters long'
     return errors
 class Course(models.Model):
-  course_name = models.CharField(max_length=10)
-  description = models.OneToOneField(Description) 
-  created_at = models.DateTimeField(auto_now_add=True)
-  updated_at = models.DateTimeField(auto_now = True)
-  objects = CourseManager()
-
+    course_name = models.CharField(max_length=100)  
+    description = models.OneToOneField(Description, on_delete=models.CASCADE) 
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    objects = CourseManager()
 
 def create_course(data):
   return Course.objects.create(course_name = data['course_name'],  description = data['description'])
+
