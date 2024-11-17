@@ -22,12 +22,12 @@ class Registration_Manage(models.Manager):
     def login_validator(self,postData):
         errors = {}
         email = postData['email']
-        try:
-            user = Registration.objects.get(email=email)
+        user = Registration.objects.get(email=email)
+        if not user:
+            errors['email'] = "No user account with this email address was found."
+        else:
             if not bcrypt.checkpw(postData['password'].encode(), user.password.encode()):
                 errors['password'] = "Incorrect password."
-        except Registration.DoesNotExist:
-            errors['email'] = "No user account with this email address was found."
         return errors
 
 

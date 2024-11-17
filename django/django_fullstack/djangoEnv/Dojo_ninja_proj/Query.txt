@@ -1,0 +1,69 @@
+1- python manage.py makemigrations
+2- python manage.py migrate
+3-RUN THE SHELL AND IMPORT MODELS:
+-python manage.py shell
+->>> from app.models import *
+
+Query: Create 3 new dojos:
+
+>>> Dojo.objects.create(name = "Ali" , city ="Jenin" , state = "pl")
+<Dojo: Dojo object (1)>
+>>> Dojo.objects.create(name = "Ayman" , city = "Nables" , state ="pl")
+<Dojo: Dojo object (2)>
+>>> Dojo.objects.create(name = "Zak" , city = "Ramallah" , state = "pl")
+<Dojo: Dojo object (3)>
+
+Query: Delete the 3 dojos you just created:
+<Dojo: Dojo object (3)>
+>>> A = Dojo.objects.get(id=1)
+>>> A.delete()
+(1, {'app.Dojo': 1})
+>>> b = Dojo.objects.get(id=2)
+>>> b.delete()
+(1, {'app.Dojo': 1})
+>>> c = Dojo.objects.get(id=3)
+>>> c.delete()
+(1, {'app.Dojo': 1})
+
+Query: Create 3 more dojos:
+
+>>> Dojo.objects.create(name = "first_dojo" , city ="Jenin" , state = "pl")
+<Dojo: Dojo object (4)>
+>>> Dojo.objects.create(name = "second_dojo" , city ="Jenin" , state = "pl")
+<Dojo: Dojo object (5)>
+>>> Dojo.objects.create(name = "third_dojo" , city ="Jenin" , state = "pl")
+
+Query: Create 3 ninjas that belong to the first dojo :
+	
+>>> my_ninja_a = Ninja.objects.create(first_name = "Ninja_1" , last_name = "L" , dojo = Dojo.objects.get(id = 4))
+>>> my_ninja_b = Ninja.objects.create(first_name = "Ninja_2" , last_name = "L_2" , dojo = Dojo.objects.get(id = 4))
+>>> my_ninja_c = Ninja.objects.create(first_name = "Ninja_3" , last_name = "L_3" , dojo = Dojo.objects.get(id = 4))
+
+
+Query: Create 3 ninjas that belong to the second dojo :
+
+>>> my_ninja_d = Ninja.objects.create(first_name = "Ninja_4" , last_name = "L_4" , dojo = Dojo.objects.get(id = 5))
+>>> my_ninja_e = Ninja.objects.create(first_name = "Ninja_5" , last_name = "L_5" , dojo = Dojo.objects.get(id = 5))
+>>> my_ninja_f = Ninja.objects.create(first_name = "Ninja_6" , last_name = "L_6" , dojo = Dojo.objects.get(id = 5))
+
+Query: Create 3 ninjas that belong to the third dojo :
+
+>>> my_ninja_g = Ninja.objects.create(first_name = "Ninja_7" , last_name = "L_7" , dojo = Dojo.objects.get(id = 6))
+>>> my_ninja_h = Ninja.objects.create(first_name = "Ninja_8" , last_name = "L_8" , dojo = Dojo.objects.get(id = 6))
+>>> my_ninja_g = Ninja.objects.create(first_name = "Ninja_9" , last_name = "L_9" , dojo = Dojo.objects.get(id = 6))
+
+Query: Retrieve all the ninjas from the first dojo:
+	Ninja.objects.filter(dojo=Dojo.objects.get(id=4))
+
+
+Query: Retrieve all the ninjas from the last dojo:
+
+	Ninja.objects.filter(dojo=Dojo.objects.get(id=5))
+Query: Retrieve the last ninja's dojo:
+
+Ninja.objects.filter(dojo=Dojo.objects.get(id=6))
+
+
+
+
+

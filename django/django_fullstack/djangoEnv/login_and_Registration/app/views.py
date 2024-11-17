@@ -32,7 +32,7 @@ def login_user(request):
         request.session['first_name'] = user.first_name
         request.session['last_name'] = user.last_name
         return redirect('/success')
-    return HttpResponseRedirect('Something went wrong. Please try again!')
+    return HttpResponse('Something went wrong. Please try again!')
 
 
 def success_user(request):
