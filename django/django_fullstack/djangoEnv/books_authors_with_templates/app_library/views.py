@@ -19,15 +19,13 @@ def add_fun_book(request):
   if request.method == 'POST':
     models.add_books(request.POST)
     return redirect('/')
-  else :
-    return HttpResponse("Something wrong")
+  return HttpResponse("Something wrong")
   
 def add_fun_author(request):
   if request.method == 'POST':
     models.add_authors(request.POST)
     return redirect('/authors')
-  else :
-    return HttpResponse("Something wrong")
+  return HttpResponse("Something wrong")
   
 
 def fun_book(request,id):

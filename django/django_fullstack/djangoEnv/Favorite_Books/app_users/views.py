@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, HttpResponse, HttpResponseRedirect
-from .models import Registration
+from .models import User
 from . import models
 from django.contrib import messages
 
@@ -10,7 +10,7 @@ def index(request):
 
 def register_user(request):
     if request.method == 'POST':
-        errors = Registration.objects.validate_registration(request.POST)
+        errors = User.objects.validate_registration(request.POST)
         if len(errors) > 0:
             for key, value in errors.items():
                 messages.error(request, value, extra_tags='register')
@@ -22,24 +22,22 @@ def register_user(request):
 
 def login_user(request):
     if request.method == 'POST':
-        errors = Registration.objects.login_validator(request.POST)
+        errors = User.objects.login_validator(request.POST)
         if len(errors) > 0:
             for key, value in errors.items():
                 messages.error(request, value, extra_tags='login')
             return redirect('/')
         email = request.POST['email']
-        user = Registration.objects.get(email=email)
+        user = User.objects.get(email=email)
+        request.session['user'] = user
         request.session['first_name'] = user.first_name
         request.session['last_name'] = user.last_name
-        return redirect('/success')
+        return redirect('/books/')
     return HttpResponse('Something went wrong. Please try again!')
 
 
 def success_user(request):
-    if 'first_name' not in request.session:
-        return redirect('/')
     return render(request, 'success.html')
-
 
 
 def logout_user(request):

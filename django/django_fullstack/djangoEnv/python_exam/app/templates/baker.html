@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Pies</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container mt-5">
+    <h1 class="text-center mb-4">All the Dojos</h1>
+    <table class="table table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th>Name</th>
+          <th>Baker</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for pie in pies %}
+          <tr>
+            <td><a href="#">{{ pie.name_pie }}</a></td>
+            <td><em>{{ pie.users.first_name }}</em></td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <div class="text-center mt-4">
+      <a href="/dashboard" class="btn btn-primary">Go to My Pies</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Dashboard</a>
+    <div class="ml-auto">
+      <a href="/logout" class="btn btn-outline-danger">Log out</a>
+    </div>
+  </nav>
+  <div class="container mt-5">
+    <h1 class="text-center">Success! Welcome, {{ request.session.first_name }}!</h1>
+    <p class="text-center">Successfully registered (or logged in)</p>
+    <div class="row mt-4">
+      <div class="col-md-6">
+        <h2>Add a New Pie</h2>
+        <form action="/dashboard_view" method="post">
+          {% csrf_token %}
+          <div class="form-group">
+            <label for="name_pie">Name:</label>
+            <input type="text" class="form-control" name="name_pie" id="name_pie">
+          </div>
+          <div class="form-group">
+            <label for="filling">Filling</label>
+            <input type="text" class="form-control" name="filling" id="filling">
+          </div>
+          <div class="form-group">
+            <label for="crust">Crust</label>
+            <input type="text" class="form-control" name="crust" id="crust">
+          </div>
+          <button type="submit" class="btn btn-primary">Add</button>
+        </form>
+        {% if messages %}
+        <ul class="messages mt-3">
+          {% for message in messages %}
+          <li class="alert alert-{{ message.tags }}">{{ message }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </div>
+      <div class="col-md-6">
+        <h3>Pies by {{ request.session.first_name }}</h3>
+        <table class="table table-striped">
+          <thead class="thead-dark">
+            <tr>
+              <th>Name</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for pie in pies %}
+            <tr>
+              <td>{{ pie.name_pie }}</td>
+              <td>
+                <a href="pies/edit/{{ pie.id }}" class="btn btn-warning btn-sm">Edit</a>
+                <a href="pies/{{ pie.id }}/destroy" class="btn btn-danger btn-sm">Delete</a>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="text-center mt-4">
+      <a href="/pies" class="btn btn-secondary">Back to My Pies</a>
+    </div>
+  </div>
+</body>
+</html>
